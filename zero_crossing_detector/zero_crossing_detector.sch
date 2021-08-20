@@ -1,0 +1,176 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Zero crossing detector"
+Date "2021-08-20"
+Rev "1.0"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Screw_Terminal_01x02 J1
+U 1 1 611FEA2A
+P 4300 3800
+F 0 "J1" H 4218 3475 50  0000 C CNN
+F 1 "MAINS_IN" H 4218 3566 50  0000 C CNN
+F 2 "" H 4300 3800 50  0001 C CNN
+F 3 "~" H 4300 3800 50  0001 C CNN
+	1    4300 3800
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:D D2
+U 1 1 61200004
+P 4800 3450
+F 0 "D2" H 4800 3234 50  0000 C CNN
+F 1 "1N1005" H 4800 3325 50  0000 C CNN
+F 2 "" H 4800 3450 50  0001 C CNN
+F 3 "~" H 4800 3450 50  0001 C CNN
+	1    4800 3450
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 612011C1
+P 5400 3450
+F 0 "R1" V 5193 3450 50  0000 C CNN
+F 1 "300k" V 5284 3450 50  0000 C CNN
+F 2 "" V 5330 3450 50  0001 C CNN
+F 3 "~" H 5400 3450 50  0001 C CNN
+	1    5400 3450
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 61201E4C
+P 5850 3150
+F 0 "R3" H 5780 3104 50  0000 R CNN
+F 1 "100R" H 5780 3195 50  0000 R CNN
+F 2 "" V 5780 3150 50  0001 C CNN
+F 3 "~" H 5850 3150 50  0001 C CNN
+	1    5850 3150
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 612026DF
+P 6300 3450
+F 0 "R2" V 6507 3450 50  0000 C CNN
+F 1 "20k" V 6416 3450 50  0000 C CNN
+F 2 "" V 6230 3450 50  0001 C CNN
+F 3 "~" H 6300 3450 50  0001 C CNN
+	1    6300 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Transistor_BJT:PN2222A Q1
+U 1 1 612048DC
+P 6800 3450
+F 0 "Q1" H 6990 3496 50  0000 L CNN
+F 1 "PN2222A" H 6990 3405 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 7000 3375 50  0001 L CIN
+F 3 "http://www.fairchildsemi.com/ds/PN/PN2222A.pdf" H 6800 3450 50  0001 L CNN
+	1    6800 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x02_Male J2
+U 1 1 61206015
+P 7850 3100
+F 0 "J2" H 7822 2982 50  0000 R CNN
+F 1 "OUTPUT" H 7822 3073 50  0000 R CNN
+F 2 "" H 7850 3100 50  0001 C CNN
+F 3 "~" H 7850 3100 50  0001 C CNN
+	1    7850 3100
+	-1   0    0    1   
+$EndComp
+$Comp
+L Isolator:SFH617A-1 U1
+U 1 1 6120745C
+P 7200 3050
+F 0 "U1" H 7200 3375 50  0000 C CNN
+F 1 "OPTOCOUPLER" H 7200 3284 50  0000 C CNN
+F 2 "Package_DIP:DIP-4_W7.62mm" H 7000 2850 50  0001 L CIN
+F 3 "http://www.vishay.com/docs/83740/sfh617a.pdf" H 7200 3050 50  0001 L CNN
+	1    7200 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4600 3450 4650 3450
+Wire Wire Line
+	4950 3450 5250 3450
+Wire Wire Line
+	5550 3450 5850 3450
+Connection ~ 5850 3450
+Wire Wire Line
+	5850 3300 5850 3450
+Wire Wire Line
+	6150 3450 5850 3450
+Wire Wire Line
+	6600 3450 6450 3450
+Wire Wire Line
+	5850 3450 5850 3600
+$Comp
+L Device:C C1
+U 1 1 61202BA2
+P 5850 3750
+F 0 "C1" H 5965 3796 50  0000 L CNN
+F 1 "1uF 50V" H 5965 3705 50  0000 L CNN
+F 2 "" H 5888 3600 50  0001 C CNN
+F 3 "~" H 5850 3750 50  0001 C CNN
+	1    5850 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 3900 5850 4000
+Wire Wire Line
+	5850 4000 6900 4000
+Wire Wire Line
+	6900 4000 6900 3650
+Wire Wire Line
+	5850 3000 5850 2950
+Wire Wire Line
+	6900 3150 6900 3250
+Wire Wire Line
+	7500 2950 7650 2950
+Wire Wire Line
+	7650 2950 7650 3000
+Wire Wire Line
+	7650 3100 7650 3150
+Wire Wire Line
+	7650 3150 7500 3150
+Wire Wire Line
+	4600 3800 4500 3800
+Wire Wire Line
+	4500 3700 4600 3700
+Wire Wire Line
+	5850 2950 6900 2950
+$Comp
+L Device:D D1
+U 1 1 6120078B
+P 5250 4000
+F 0 "D1" H 5250 4216 50  0000 C CNN
+F 1 "1N1005" H 5250 4125 50  0000 C CNN
+F 2 "" H 5250 4000 50  0001 C CNN
+F 3 "~" H 5250 4000 50  0001 C CNN
+	1    5250 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 4000 5400 4000
+Connection ~ 5850 4000
+Wire Wire Line
+	4600 3450 4600 3700
+Wire Wire Line
+	4600 3800 4600 4000
+Wire Wire Line
+	4600 4000 5100 4000
+Text Notes 4150 2050 0    100  ~ 0
+Component values can be changed a bit,\nas long as they stay in the ballpark. The NPN\ncan be any generic NPN transistor and the\noptocoupler as well.
+$EndSCHEMATC

@@ -3,6 +3,14 @@ uint16_t old_phase_time = 0;
 uint8_t phase_goal = 0;
 boolean flag = false;
 
+boolean offline = false;
+boolean got_pulse_last_period = true;
+uint8_t list_index = 0;
+uint16_t period_over_time[256] = {0};
+uint8_t remainder = 0;
+uint8_t loop_counter = 0;
+
+
 const char* phase_names[] = {"+L1", "-L3", "+L2", "-L1", "+L3", "-L2"};
 
 void setup() {
@@ -25,11 +33,12 @@ void setup() {
   // TIMSK1
   // Input capture interrupt enable
   // ICIE1 - 1
-  TIMSK1 = B00100001;
+  TIMSK1 = B00100010;
 
   Serial.begin(115200);
   pinMode(8, INPUT_PULLUP);
   pinMode(9, OUTPUT);
+  pinMode(2, OUTPUT);
 }
 
 void loop() {
@@ -44,6 +53,13 @@ void loop() {
     Serial.print(phase_time);
     Serial.print("\t");
     Serial.println(OCR1A);
+  }
+  if (offline) {
+    uint32_t total = 0;
+    for (uint16_t i = 0; i < 256; i++) {
+      total += period_over_time[i];
+    }
+    OCR1A = (total >> 8) + (loop_counter < total % 256);
   }
 }
 
@@ -65,5 +81,19 @@ ISR(TIMER1_CAPT_vect) {
     OCR1A += dir ? 1 : -1;
   }
   old_phase_time = phase_time;
+  period_over_time[list_index++ % 256] = OCR1A;
+  got_pulse_last_period = true;
   flag = true;
+}
+
+ISR(TIMER1_COMPA_vect) {
+  loop_counter++;
+  if (got_pulse_last_period) {
+    PORTD |= B00000100;
+    offline = false;
+    got_pulse_last_period = false;
+  } else {
+    PORTD &= B11111011;
+    offline = true;
+  }
 }

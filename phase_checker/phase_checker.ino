@@ -1,3 +1,17 @@
+/* Phase checker
+ * 
+ * Connections:
+ *   Zero crossing detector:
+ *     Optocoupler collector to pin D8
+ *     Optocoupler emitter to GND
+ *   Display:
+ *     TODO...
+ *     
+ * Outputs:
+ *   Online indicatcor on pin D2
+ *   Internal 50 Hz signal on pin D9 (toggles every cycle)
+ */
+
 uint16_t phase_time = 0;
 uint16_t old_phase_time = 0;
 uint8_t phase_goal = 0;

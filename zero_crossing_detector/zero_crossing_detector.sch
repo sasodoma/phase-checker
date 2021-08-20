@@ -113,7 +113,7 @@ Wire Wire Line
 Wire Wire Line
 	6150 3450 5850 3450
 Wire Wire Line
-	6600 3450 6450 3450
+	6600 3450 6550 3450
 Wire Wire Line
 	5850 3450 5850 3600
 $Comp
@@ -170,7 +170,19 @@ Wire Wire Line
 Wire Wire Line
 	4600 3800 4600 4000
 Wire Wire Line
-	4600 4000 5100 4000
+	4600 4000 4900 4000
 Text Notes 4150 2050 0    100  ~ 0
 Component values can be changed a bit,\nas long as they stay in the ballpark. The NPN\ncan be any generic NPN transistor and the\noptocoupler as well.
+Wire Wire Line
+	6550 3450 6550 4150
+Wire Wire Line
+	6550 4150 4900 4150
+Wire Wire Line
+	4900 4150 4900 4000
+Connection ~ 6550 3450
+Wire Wire Line
+	6550 3450 6450 3450
+Connection ~ 4900 4000
+Wire Wire Line
+	4900 4000 5100 4000
 $EndSCHEMATC
